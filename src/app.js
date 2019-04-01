@@ -1,6 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Route} from 'react-router-dom';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
-ReactDOM.render(<p>This is the boilerplate</p>, document.getElementById('app'));
+const ExpenseDashboardPage = () => (
+  <div>this is the dashboard component page</div>
+)
+
+const AddExpensePage = () => (
+  <div>this is add expense page</div>
+)
+
+const EditExpensePage = () => (
+  <div>this is edit expense page</div>
+)
+
+const HelpPage = () => (
+  <div>this is help page</div>
+)
+
+const routes = (
+  <BrowserRouter>
+    <div>
+      <Route path="/" component={ExpenseDashboardPage} exact={true}/>
+      <Route path="/create" component={AddExpensePage} />
+      <Route path="/edit" component={EditExpensePage} />
+      <Route path="/help" component={HelpPage} />
+    </div>
+  </BrowserRouter>
+);
+
+ReactDOM.render(routes, document.getElementById('app'));
