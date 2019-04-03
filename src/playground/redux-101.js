@@ -1,70 +1,76 @@
 import { createStore } from 'redux';
 
-const store = createStore((state = { count: 0 }, action) => {
-  switch (action.type){
+// 4 Action generators - functions that return action objects - Action must have minimum type property
+
+const incrementCount = ({ incrementBy = 1 } = {}) => ({ // destructure obj arguement of function give default value of 1
+  type: 'INCREMENT',                                    // ({ incrementBy = 1 } = {}) default obj stops undefined error
+  incrementBy                                           // if no obj provided empty object used, destructure empty obj no incementBy do default of 1 used.
+});
+const decrementCount = ({ decrementBy = 1 } = {}) => ({
+  type: 'DECREMENT',
+  decrementBy
+});
+const setCount = ({ count }) => ({
+  type: 'SET',
+  count
+});
+const resetCount = () => ({
+  type: 'RESET'
+});
+
+
+// Reducers
+// 1 reducers are pure functions
+// 2 Never change state or action
+
+const countReducer = (state = { count: 0 }, action) => { // this is a Reducer
+  switch (action.type) {
     case 'INCREMENT':
-      const incrementBy = typeof action.incrementBy === 'number' ? action.incrementBy : 1;
       return {
-        count: state.count + incrementBy
+        count: state.count + action.incrementBy
       };
     case 'DECREMENT':
-      const decrementBy = typeof action.decrementBy === 'number' ? action.decrementBy : 1;
       return {
-        count: state.count - decrementBy
+        count: state.count - action.decrementBy
       };
-    case 'SET' :
+    case 'SET':
       return {
-        count : action.count
-      }
+        count: action.count
+      };
     case 'RESET':
       return {
-        count: state.count = 0
+        count: 0
       };
     default:
       return state;
   }
-});
+};
 
 
+const store = createStore(countReducer);
+
+
+// store.subscribe() runs arrow function below everytime store changes
 // store.getState is called everytime store changes
 // return value from subscribe is a function used to unsubscribe when called
 
-const unsubcribe = store.subscribe(() => {
+const unsubscribe = store.subscribe(() => {
   console.log(store.getState());
 });
 
-// Actions - must have type plus whatever else
 
-store.dispatch({
-  type: 'INCREMENT',
-  incrementBy: 5
-});
+// dispatch Action
 
-store.dispatch({
-  type: 'INCREMENT',
-  incrementBy: 25
-});
+store.dispatch(incrementCount({ incrementBy: 5 }))
 
-store.dispatch({
-  type: 'INCREMENT'
-});
+store.dispatch(incrementCount());
 
-store.dispatch({
-  type: 'DECREMENT',
-  decrementBy :10
-});
+store.dispatch(resetCount());
 
-store.dispatch({
-  type: 'DECREMENT'
-});
+store.dispatch(decrementCount());
 
-store.dispatch({
-  type: 'RESET'
-});
+store.dispatch(decrementCount({ decrementBy: 10 }));
 
-store.dispatch({
-  type: 'SET',
-  count: 101
-})
+store.dispatch(setCount({ count: -100 }));
 
-unsubcribe(); // unsubscribes - prints to console up to reset value
+unsubscribe(); // unsubscribes - prints to console up to reset value
