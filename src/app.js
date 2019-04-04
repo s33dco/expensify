@@ -9,28 +9,19 @@ import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
 const store = configureStore();
-store.subscribe(() => {
-  const state = store.getState();
-  const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-  console.log(visibleExpenses);
-});
 
 // add some expenses
 
 store.dispatch(addExpense({description:'Rent bill', amount:3700, createdAt: 1000}));
 store.dispatch(addExpense({description:'Clothing', amount:2300, createdAt: 3000}));
 store.dispatch(addExpense({description:'Elec bill', amount:5200, createdAt: 2000}));
-// set filters 'bill' -> 'water'
-
 store.dispatch(setTextFilter('bill'));
-
 store.dispatch(setTextFilter('Rent'));
-// getVisible
-
 store.dispatch(setTextFilter());
 
+const state = store.getState();
+const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+console.log(visibleExpenses);
 
-
-console.log(store.getState())
 
 ReactDOM.render(<AppRouter />, document.getElementById('app'));
