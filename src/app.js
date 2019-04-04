@@ -15,13 +15,15 @@ const store = configureStore();
 
 store.dispatch(addExpense({description:'Rent bill', amount:3700, createdAt: 1000}));
 store.dispatch(addExpense({description:'Clothing', amount:2300, createdAt: 3000}));
-store.dispatch(addExpense({description:'Elec bill', amount:5200, createdAt: 2000}));
+store.dispatch(addExpense({description:'Elec bill', amount:6200, createdAt: 2000}));
 store.dispatch(setTextFilter('bill'));
 store.dispatch(setTextFilter('Rent'));
-store.dispatch(setTextFilter('poodles'));
 
+
+
+// watch poodles change to dolphins
 setTimeout(() => {
-  store.dispatch(setTextFilter('dolphins'));
+  store.dispatch(setTextFilter('bill'));
 }, 3000);
 
 const state = store.getState();
