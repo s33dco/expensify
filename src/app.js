@@ -12,19 +12,12 @@ import './styles/styles.scss';
 const store = configureStore();
 
 // add some expenses
-
+store.dispatch(addExpense({description:'Food', amount:9200, createdAt: 5000}));
 store.dispatch(addExpense({description:'Rent bill', amount:3700, createdAt: 1000}));
 store.dispatch(addExpense({description:'Clothing', amount:2300, createdAt: 3000}));
 store.dispatch(addExpense({description:'Elec bill', amount:6200, createdAt: 2000}));
-store.dispatch(setTextFilter('bill'));
-store.dispatch(setTextFilter('Rent'));
+store.dispatch(addExpense({description:'Food', amount:19200, createdAt: -5000}));
 
-
-
-// watch poodles change to dolphins
-setTimeout(() => {
-  store.dispatch(setTextFilter('bill'));
-}, 3000);
 
 const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
