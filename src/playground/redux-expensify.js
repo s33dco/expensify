@@ -149,7 +149,7 @@ const getVisibleExpenses = (expenses, {text, sortBy, startDate, endDate}) => {
     const endDateMatch = typeof endDate !== 'number' || expense.createdAt <= endDate;
     const textMatch = expense.description.toLowerCase().includes(text.toLowerCase());
 
-    return startDateMatch && endDateMatch && textMatch;
+    return startDateMatch && endDateMatch && textMatch; // if all above true for expense include
   }).sort((a, b) => {
     if (sortBy === 'date'){
       return a.createdAt < b.createdAt ? 1 : -1;
@@ -158,8 +158,6 @@ const getVisibleExpenses = (expenses, {text, sortBy, startDate, endDate}) => {
     } 
   });
 };
-
-
 
 // Store Creation
 
