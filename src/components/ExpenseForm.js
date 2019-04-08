@@ -7,6 +7,7 @@ import 'react-dates/lib/css/_datepicker.css';
 // uses component state to track form before submit hence class...
 
 export default class ExpenseForm extends React.Component{
+
   constructor(props){
     super(props);
 
@@ -35,17 +36,17 @@ export default class ExpenseForm extends React.Component{
     if (!amount || !isNaN(amount) || amount.match(/^\d{1,}(\.\d{1,2})?$/)) {
       this.setState(()=>({amount}))
     }
-  }
+  };
 
   onDateChange = (createdAt) => {
     if (createdAt){
       this.setState(()=>({createdAt}))
     }
-  }
+  };
 
   onFocusChange = ({focused}) => {
     this.setState(() =>({calendarFocused : focused}))
-  }
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -62,8 +63,6 @@ export default class ExpenseForm extends React.Component{
         note : this.state.note
       })
     }
-
-
   }
 
   render (){
