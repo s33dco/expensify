@@ -14,8 +14,12 @@ module.exports = {
 	// An array of file extensions your modules use
 	moduleFileExtensions: ["js", "json", "jsx"],
 
+	moduleNameMapper: {
+		"^.+.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
+	},
+
 	// The paths to modules that run some code to configure or set up the testing environment before each test
-	setupFiles: ["raf/polyfill","<rootDir>/enzyme.config.js"],
+	setupFiles: ["raf/polyfill", "<rootDir>/enzyme.config.js"],
 
 	// The test environment that will be used for testing
 	testEnvironment: "jsdom",
@@ -32,8 +36,14 @@ module.exports = {
 	// An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
 	transformIgnorePatterns: ["<rootDir>/node_modules/"],
 
+	transform: {
+		"^.+\\.js$": "babel-jest",
+		".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
+	},
+
 	// Indicates whether each individual test should be reported during the run
 	verbose: false,
 
+	// to simplify the shapshots
 	snapshotSerializers: ["enzyme-to-json/serializer"]
 }
