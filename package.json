@@ -8,12 +8,14 @@
 		"webpack_args": " --config webpack.config.js --display-error-details"
 	},
 	"scripts": {
+		"start": "node server/server.js",
 		"sd": "live-server dev/",
 		"sp": "live-server production/",
 		"build": "webpack $npm_package_config_webpack_args",
 		"build:p": "webpack $npm_package_config_webpack_args --env production",
 		"ds": "webpack-dev-server",
-		"test": "jest --watch"
+		"test": "jest --watch",
+		"heroku-postbuild": "yarn run build:p"
 	},
 	"dependencies": {
 		"@babel/core": "^7.4.4",
