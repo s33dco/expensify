@@ -20,7 +20,17 @@ module.exports = Merge(CommonConfig, {
 		]
 	},
 	optimization: {
-		minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
+		minimize: true,
+		minimizer: [
+			new TerserJSPlugin({ sourceMap: true }),
+			new OptimizeCSSAssetsPlugin({
+				cssProcessorOptions: {
+					map: {
+						inline: false
+					}
+				}
+			})
+		]
 	},
 	devtool: "source-map"
 })
