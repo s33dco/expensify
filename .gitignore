@@ -1,4 +1,4 @@
 dev/
-prod/
+production/
 node_modules/
 .vscode/

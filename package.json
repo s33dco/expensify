@@ -4,12 +4,15 @@
 	"main": "app.js",
 	"author": "s33dco <code@s33d.co>",
 	"license": "MIT",
+	"config": {
+		"webpack_args": " --config webpack.config.js --display-error-details"
+	},
 	"scripts": {
-		"serve:dev": "live-server prod/",
-		"serve:prod": "live-server prod/",
-		"build:dev": "webpack",
-		"build:prod": "webpack --env production",
-		"dev-server": "webpack-dev-server",
+		"sd": "live-server dev/",
+		"sp": "live-server production/",
+		"build": "webpack $npm_package_config_webpack_args",
+		"build:p": "webpack $npm_package_config_webpack_args --env production",
+		"ds": "webpack-dev-server",
 		"test": "jest --watch"
 	},
 	"dependencies": {
@@ -56,7 +59,9 @@
 		"live-server": "^1.2.1",
 		"mini-css-extract-plugin": "^0.6.0",
 		"optimize-css-assets-webpack-plugin": "^5.0.1",
+		"terser-webpack-plugin": "^1.2.3",
 		"webpack-cli": "^3.3.1",
-		"webpack-dev-server": "^3.3.1"
+		"webpack-dev-server": "^3.3.1",
+		"webpack-merge": "^4.2.1"
 	}
 }
