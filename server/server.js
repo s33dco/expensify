@@ -11,5 +11,5 @@ app.get("*", (req, res) => {
 })
 
 app.listen(port, () => {
-	console.log("server running")
+	console.log(`server running in ${process.env.NODE_ENV} on port ${port} 👍🏻`)
 })

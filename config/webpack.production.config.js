@@ -15,7 +15,17 @@ module.exports = Merge(CommonConfig, {
 		rules: [
 			{
 				test: /\.s?css$/,
-				use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: "css-loader",
+						options: { sourceMap: true }
+					},
+					{
+						loader: "sass-loader",
+						options: { sourceMap: true }
+					}
+				]
 			}
 		]
 	},
