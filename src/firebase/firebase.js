@@ -1,4 +1,6 @@
-import * as firebase from 'firebase' // take all named exports and put them on firebase variable
+// import * as firebase from 'firebase' // take all named exports and put them on firebase variable - too much.
+import firebase from 'firebase/app'
+import 'firebase/database'
 
 const firebaseConfig = {
 	apiKey: process.env.FIREBASE_API_KEY,
