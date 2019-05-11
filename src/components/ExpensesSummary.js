@@ -10,7 +10,6 @@ numeral.defaultFormat('$0,0.00')
 export const ExpensesSummary = ({ expenseCount, expenseTotal }) => {
 	const expenseWord = expenseCount === 1 ? 'expense' : 'expenses'
 	const formattedTotal = numeral(expenseTotal / 100).format()
-
 	return (
 		<div>
 			<h2>
@@ -22,13 +21,11 @@ export const ExpensesSummary = ({ expenseCount, expenseTotal }) => {
 
 const mapStateToProps = state => {
 	const visibleExpenses = selectExpenses(state.expenses, state.filters)
-
 	return {
 		expenseCount: visibleExpenses.length,
 		expenseTotal: selectExpensesTotal(visibleExpenses)
 	}
 }
-
 export default connect(mapStateToProps)(ExpensesSummary)
 
 // first go
