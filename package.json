@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"serve:d": "webpack-dev-server",
-		"serve:p": "NODE_ENV=production yarn build:p && NODE_ENV=production node server/server.js",
+		"serve:p": "cross-env NODE_ENV=production yarn build:p && cross-env NODE_ENV=production node server/server.js",
 		"build:d": "webpack $npm_package_config_webpack_args",
 		"build:p": "webpack $npm_package_config_webpack_args --env production",
 		"test": "cross-env NODE_ENV=test jest --watch",
