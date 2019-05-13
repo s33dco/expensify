@@ -11,6 +11,7 @@
 		"serve:d": "webpack-dev-server",
 		"serve:p": "cross-env NODE_ENV=production yarn build:p && cross-env NODE_ENV=production node server/server.js",
 		"build:d": "webpack $npm_package_config_webpack_args",
+		"buildserve:d": "webpack $npm_package_config_webpack_args && node server/server.js",
 		"build:p": "webpack $npm_package_config_webpack_args --env production",
 		"test": "cross-env NODE_ENV=test jest --watch",
 		"start": "node server/server.js",
