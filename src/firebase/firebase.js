@@ -1,6 +1,7 @@
 // import * as firebase from 'firebase' // take all named exports and put them on firebase variable - too much.
 import firebase from 'firebase/app'
 import 'firebase/database'
+import 'firebase/auth'
 
 // it is good to be able to connect to the relevant dev or test db by way of the NODE_ENV on build
 // but all API_keys etc should be kept in the backend, the env variables are great to gitignore and keep out of the repo
@@ -19,8 +20,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 const database = firebase.database()
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
 
-export { firebase, database as default }
+export { firebase, googleAuthProvider, database as default }
 
 // // subscription listening for child_removed
 // database.ref('expenses').on('child_removed', snapShot => {

@@ -68,6 +68,18 @@ export const editExpense = (id, updates) => ({
 	updates
 })
 
+export const startEditExpense = (id, updates) => {
+	return dispatch => {
+		// return function called by dispatch
+		return database // to chain on the dispatch action
+			.ref(`expenses/${id}`)
+			.update(updates)
+			.then(() => {
+				dispatch(editExpense(id, updates))
+			})
+	}
+}
+
 //SET_EXPENSES
 export const setExpenses = expenses => ({
 	type: 'SET_EXPENSES',
