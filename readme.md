@@ -1,8 +1,3 @@
-### Expensify
+### Expenses tracking app
 
-#### run with yarn dev-server
-
-#### babbel (transaform class properties) and webpack set up
-
-#### .scss ready
-
+#### Firebase db and React front end, Google authentication, deployed to Heroku

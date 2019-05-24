@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux' // provides components access to store
 import AppRouter, { history } from './routers/AppRouter'
 import configureStore from './store/configureStore'
+import LoadingPage from './components/LoadingPage'
 import { startSetExpenses } from './actions/expenses'
 import { login, logout } from './actions/auth'
 import 'normalize.css/normalize.css'
@@ -25,7 +26,7 @@ const renderApp = () => {
 	}
 }
 
-ReactDOM.render(<p>loading...</p>, document.getElementById('app'))
+ReactDOM.render(<LoadingPage />, document.getElementById('app'))
 
 firebase.auth().onAuthStateChanged(user => {
 	if (user) {
